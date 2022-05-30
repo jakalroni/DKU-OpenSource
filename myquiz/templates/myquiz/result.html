@@ -1,0 +1,25 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>채점하기</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myquiz/style.css' %}">
+</head>
+<body>
+    <fieldset>
+        {% if is_result %}
+            <h1>{{ question }} result</h1>
+            {% if answer_result %}
+                <h3><span style="color: blue;">정답</span>입니다 </h3>
+            {% else %}
+                <h3><span style="color: red;">오답</span>입니다 </h3>
+            {% endif %}
+        {% else %}
+            <h2>아직 응시하지 않은 문제입니다.<br>'응시하기'로 돌아가 문제를 풀어주세요.</h2>
+        {% endif %}
+        <a href="/"><input type="button" value="돌아가기"></a>
+    </fieldset>
+</body>
+</html>

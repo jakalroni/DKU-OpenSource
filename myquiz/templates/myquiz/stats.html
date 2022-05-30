@@ -1,0 +1,33 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>통계 확인</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myquiz/style.css' %}">
+</head>
+<body style="text-align: center;">
+    <fieldset>
+        {% if is_stats %}
+            <h1>Quiz 시험 통계(최신 순)</h1>
+            {% if question_list %}
+            <ul>
+                {% for result in result_list %}
+                    {% if result %}
+                        <li> 결과 : 정답</li>
+                    {% else %}
+                        <li> 결과 : 오답</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <h3>총 <span style="color: blue;">{{ question_count }}</span> 문제 중 <span style="color: red;">{{ correct_count }}</span> 문제 정답</h3>
+            <h3>정답률 : {{ correct_rate }}%</h3>
+        {% else %}
+            <h2>아직 응시하지 않은 문제가 있습니다.<br>모든 문제를 풀어주세요.</h2>
+        {% endif %}
+        <a href="/"><input type="button" value="돌아가기"></a>
+    </fieldset>
+</body>
+</html>

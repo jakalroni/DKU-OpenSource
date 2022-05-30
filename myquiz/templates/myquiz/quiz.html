@@ -1,0 +1,29 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>응시하기</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myquiz/style.css' %}">
+</head>
+<body>
+    <div>
+        <form action="" method="post" style="margin-left: auto; margin-right: auto; margin-top: 25px; text-align: center;">
+            {% csrf_token %}
+            <h1>{{ question.question_text }}</h1>
+            <h3>{{ question.question_content }}</h3>
+            <ul style="list-style-type: decimal; width: 200px; margin-left: auto; margin-right: auto;">
+                <li>{{ question.choice1 }}</li>
+                <li>{{ question.choice2 }}</li>
+                <li>{{ question.choice3 }}</li>
+                <li>{{ question.choice4 }}</li>
+            </ul>
+            <input type="number" name="answer" placeholder="정답번호를 입력하세요" max="4" style="margin-left: auto; margin-right: auto;">
+            <input type="submit" value="제출하기" style="margin-left: auto; margin-right: auto;">
+        </form>
+    </div>
+
+
+</body>
+</html>

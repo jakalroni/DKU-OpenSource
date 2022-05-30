@@ -1,0 +1,30 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>메인 인덱스 페이지</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myquiz/style.css' %}">
+</head>
+<body>
+    <div>
+        <h1 style="padding-top: 50px;">[Django]</h1>
+        <h1>Quiz Test</h1>
+        <a href="admin/"><input type="button" value="출제하기"></a><a href="stats/"><input type="button" value="통계 확인"></a>
+        
+    
+        {% if latest_question_list %}
+        <ul style= "padding: 10px;">
+            {% for question in latest_question_list %}
+                <li style="padding: 10px;"><a href="quiz/{{ question.id }}/">{{ question.question_text }}</a></li>
+                <a href="quiz/{{ question.id }}/"><input type="button" value="응시하기"></a><a href="result/{{ question.id }}"><input type="button" value="채점하기"></a>
+                
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No tests are available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
